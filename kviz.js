@@ -25,8 +25,10 @@ const otazky = [
     }
 ];
 
-const kviz = document.querySelector('kviz');
 
+
+const kviz = document.querySelector('kviz');
+const elementOtazka = document.getElementById('otazka');
 
 for (let i = 0; i < otazky.length; i++) {
 
@@ -44,18 +46,30 @@ for (let i = 0; i < otazky.length; i++) {
     otazka.appendChild(odpovedi);
 
 
-    //kviz.appendChild(otazka);
+    kviz.appendChild(otazka);
     
 }
 
 
 function zobrazOtazku(ot) {
-    let otazka = document.getElementById('otazka');
-    otazka.textContent = ot.zneniOtazky;
+    //let otazka = document.getElementById('otazka');
+    elementOtazka.textContent = ot.zneniOtazky;
+
+    otazky.odpovedi.forEach(odpoved => {
+        const button = document.createElement('button');
+        button.innerText = odpoved.text;
+    }),
 
     let odpoved = document.querySelectorAll('.odpovedi');
 
-    //odpoved.forEach((odpovedi) => 
+    odpoved.forEach((odpovedi) => {
+        odpoved.addEventListener('click', klikNaOdpoved);
+    },
+
+    function klikNaOdpoved(udalost) {
+        odpoved = udalost.target;
+
+    },
 
 }
 
@@ -82,6 +96,3 @@ function klikNaOdpoved() {}
 // Touto funkcí končí můj program (budu se rozhodovat, zda ji zavolat v rámci klikNaOdpoved())
 function zobrazVyhodnoceni() {}
 */
-
-
-
