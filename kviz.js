@@ -25,24 +25,35 @@ const otazky = [
     },
 ];
 
-const kviz = document.querySelector('.kviz');
 let poradi = document.getElementById('poradi');
 let otazka = document.getElementById('otazka');
-let odpoved = document.querySelector('.odp');
 let obrazek = document.getElementById('obrazek');
+let moznosti = document.getElementById('moznosti');
+let odpovedi = document.getElementById('odpovedi');
 
+let aktualniOtazka = 0;
 
-function spustKviz() {
-    otazka.textContent = otazky[0].zneniOtazky;
-    obrazek.src = otazky[0].obrazek;
-    poradi = 0;
-    
-
-}
+zobrazOtazku();
 
 function zobrazOtazku() {
-    
+    poradi.textContent = "Otázka " + (aktualniOtazka + 1) + "/" + otazky.length;
+    otazka.textContent = otazky[aktualniOtazka].zneniOtazky;
+    obrazek.src = otazky[aktualniOtazka].obrazek;
+
+    let odpovediObjektu = otazky[aktualniOtazka].odpovedi;
+
+    for (let i = 0; i < odpovediObjektu.length; i++) {
+        let polozka = document.createElement('li');
+        polozka.textContent = odpovediObjektu[i];
+        polozka.addEventListener('click', klikNaOdpoved);
+
+        odpovedi.appendChild(polozka);
+    }
+
 }
 
-spustKviz();
 
+function klikNaOdpoved() {
+    aktualniOtazka = aktualniOtazka + 1;
+    zobrazOtazku();
+}
