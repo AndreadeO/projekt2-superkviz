@@ -50,10 +50,22 @@ function zobrazOtazku() {
         odpovedi.appendChild(polozka);
     }
 
+
 }
 
 
 function klikNaOdpoved() {
+    resetOdpovedi();
+
     aktualniOtazka = aktualniOtazka + 1;
     zobrazOtazku();
+    
+
 }
+
+function resetOdpovedi() {
+    while (odpovedi.firstChild) {
+        odpovedi.removeChild (odpovedi.firstChild);
+    }
+}
+
