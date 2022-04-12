@@ -60,7 +60,9 @@ function klikNaOdpoved() {
     aktualniOtazka = aktualniOtazka + 1;
     zobrazOtazku();
     
-
+    if (aktualniOtazka === otazky.length) {
+        console.log("Hodnoceni");
+    }
 }
 
 function resetOdpovedi() {
@@ -69,3 +71,34 @@ function resetOdpovedi() {
     }
 }
 
+
+
+let skore = document.getElementById('hodnoceni');
+stavSkore = 0;
+skore.innerHTML = stavSkore;
+
+//console.log(otazky[0].zneniOtazky);
+
+if (otazky[0].zneniOtazky === 0) {
+    stavSkore = stavSkore + 1;
+}
+
+if (otazky[1].zneniOtazky === 0) {
+    stavSkore = stavSkore + 1;
+}
+
+if (otazky[2].zneniOtazky === 1) {
+    stavSkore = stavSkore + 1;
+} 
+
+if (otazky[3].zneniOtazky === 1) {
+    stavSkore = stavSkore + 1;
+} 
+
+
+if (aktualniOtazka > otazky.length) {
+    
+    poradi.remove();
+    otazka.remove();
+    obrazek.remove();
+}
