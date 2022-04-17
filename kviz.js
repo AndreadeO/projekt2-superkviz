@@ -44,6 +44,7 @@ function zobrazOtazku() {
 
     for (let i = 0; i < odpovediObjektu.length; i++) {
         let polozka = document.createElement('li');
+        polozka.dataset.odpoved = odpovediObjektu[i];
         polozka.textContent = odpovediObjektu[i];
         polozka.addEventListener('click', klikNaOdpoved);
 
@@ -53,55 +54,35 @@ function zobrazOtazku() {
 
 }
 
+let mojeOdpovedi = [];
 
-function klikNaOdpoved() {
-    resetOdpovedi();
 
+
+function klikNaOdpoved(event) {
+    let odpoved = event.target.dataset.odpoved;
+    mojeOdpovedi.push(parseInt(odpoved));
     aktualniOtazka = aktualniOtazka + 1;
-    zobrazOtazku();
-    
     if (aktualniOtazka === otazky.length) {
-        console.log("Hodnoceni");
+        poradi.textContent = "Zavolej funkci, ktera zorazi hodnoceni.";
+        zjistiSpravnouOdpoved();
+    } else{
+        odpovedi.querySelectorAll('li').forEach((element) => element.remove());
+        zobrazOtazku();
+    }
+    console.log(mojeOdpovedi);
+}
+
+function zjistiSpravnouOdpoved() {
+    for (let i = 0; i < otazky.length; i++) {
+        if (mojeOdpovedi[i] === otazky[i].spravnaOdpoved) {
+            console.log('spravne');       
+        } else {
+            console.log('spatne');
+        }
     }
 }
 
-function resetOdpovedi() {
-    while (odpovedi.firstChild) {
-        odpovedi.removeChild (odpovedi.firstChild);
-    }
-}
 
-
-/*
-let skore = document.getElementById('hodnoceni');
-stavSkore = 0;
-skore.innerHTML = stavSkore;
-
-//console.log(otazky[0].zneniOtazky);
-
-if (otazky[0].zneniOtazky === 0) {
-    stavSkore = stavSkore + 1;
-}
-
-if (otazky[1].zneniOtazky === 0) {
-    stavSkore = stavSkore + 1;
-}
-
-if (otazky[2].zneniOtazky === 1) {
-    stavSkore = stavSkore + 1;
-} 
-
-if (otazky[3].zneniOtazky === 1) {
-    stavSkore = stavSkore + 1;
-} 
-
-*/
-if (aktualniOtazka > otazky.length) {
-    
-    let kviz = document.querySelector('.kviz');
-    kviz.removeChild(kviz);
-
-}
 
 
 
