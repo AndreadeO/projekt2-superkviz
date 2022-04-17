@@ -72,7 +72,7 @@ function resetOdpovedi() {
 }
 
 
-
+/*
 let skore = document.getElementById('hodnoceni');
 stavSkore = 0;
 skore.innerHTML = stavSkore;
@@ -95,10 +95,14 @@ if (otazky[3].zneniOtazky === 1) {
     stavSkore = stavSkore + 1;
 } 
 
-
+*/
 if (aktualniOtazka > otazky.length) {
     
-    poradi.remove();
-    otazka.remove();
-    obrazek.remove();
+    let kviz = document.querySelector('.kviz');
+    kviz.removeChild(kviz);
+
 }
+
+
+
+
