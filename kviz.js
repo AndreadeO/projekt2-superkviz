@@ -63,9 +63,10 @@ function klikNaOdpoved(event) {
     mojeOdpovedi.push(parseInt(odpoved));
     aktualniOtazka = aktualniOtazka + 1;
     if (aktualniOtazka === otazky.length) {
-        poradi.textContent = "Zavolej funkci, ktera zorazi hodnoceni.";
+        //poradi.textContent = "Zavolej funkci, ktera zorazi hodnoceni.";
+        ukazHodnoceni();
         zjistiSpravnouOdpoved();
-    } else{
+    } else {
         odpovedi.querySelectorAll('li').forEach((element) => element.remove());
         zobrazOtazku();
     }
@@ -83,7 +84,15 @@ function zjistiSpravnouOdpoved() {
 }
 
 
+function ukazHodnoceni() {
+    document.querySelector('.kviz').style.display = 'none';
+    document.querySelector('.vysledek').style.display = 'block';
+    let hodnoceni = document.querySelector('#hodnoceni');
 
+
+    let pocetSpravnychOdpovedi = 0;
+
+}
 
 
 
