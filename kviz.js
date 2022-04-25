@@ -113,7 +113,7 @@ function ukazHodnoceni() {
     }
 
     let procenta = document.createElement('h2');
-	procenta.textContent += 'Správně ' + pocetSpravnychOdpovedi + ' ze ' + otazky.length + ' otázek. Úspěšnost ' + Math.round(pocetSpravnychOdpovedi / otazky.length * 100) + ' %.';
+	procenta.textContent += 'Správně ' + pocetSpravnychOdpovedi + ' ze ' + otazky.length + ' otázek. Tvoje úspěšnost je ' + Math.round(pocetSpravnychOdpovedi / otazky.length * 100) + ' %.';
 	hodnoceni.appendChild(procenta);
 }
 
