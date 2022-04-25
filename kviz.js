@@ -44,7 +44,7 @@ function zobrazOtazku() {
 
     for (let i = 0; i < odpovediObjektu.length; i++) {
         let polozka = document.createElement('li');
-        polozka.dataset.odpoved = odpovediObjektu[i];
+        polozka.dataset.odpoved = i;
         polozka.textContent = odpovediObjektu[i];
         polozka.addEventListener('click', klikNaOdpoved);
 
@@ -54,13 +54,14 @@ function zobrazOtazku() {
 
 }
 
-let mojeOdpovedi = [];
+const mojeOdpovedi = [];
 
 
 
 function klikNaOdpoved(event) {
     let odpoved = event.target.dataset.odpoved;
-    mojeOdpovedi.push(parseInt(odpoved));
+    mojeOdpovedi.push(parseInt(odpoved));   
+
     aktualniOtazka = aktualniOtazka + 1;
     if (aktualniOtazka === otazky.length) {
         //poradi.textContent = "Zavolej funkci, ktera zorazi hodnoceni.";
@@ -70,7 +71,7 @@ function klikNaOdpoved(event) {
         odpovedi.querySelectorAll('li').forEach((element) => element.remove());
         zobrazOtazku();
     }
-    console.log(mojeOdpovedi);
+    //console.log(mojeOdpovedi);
 }
 
 function zjistiSpravnouOdpoved() {
