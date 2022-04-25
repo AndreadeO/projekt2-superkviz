@@ -93,6 +93,28 @@ function ukazHodnoceni() {
 
     let pocetSpravnychOdpovedi = 0;
 
+    for (let i = 0; i < otazky.length; i++) {
+        let polozenaOtazka = document.createElement('h3');
+        polozenaOtazka.textContent = (i + 1) + '. ' + 'otázka: ';
+        hodnoceni.appendChild(polozenaOtazka);
+
+        let tvojeOdp = document.createElement('p');
+		tvojeOdp.textContent = 'Tvoje odpověď: ' + otazky[i].odpovedi[mojeOdpovedi[i]];
+		hodnoceni.appendChild(tvojeOdp);
+
+		let spravnaOdpoved = document.createElement('p');
+		if (parseInt(mojeOdpovedi[i]) === otazky[i].spravnaOdpoved) {
+			pocetSpravnychOdpovedi++;
+			spravnaOdpoved.textContent = 'To je SPRÁVNĚ.';
+		} else {
+			spravnaOdpoved.textContent = 'Správná odpověď: ' + otazky[i].odpovedi[otazky[i].spravnaOdpoved];
+		}
+		hodnoceni.appendChild(spravnaOdpoved);
+    }
+
+    let procenta = document.createElement('h2');
+	procenta.textContent += 'Správně ' + pocetSpravnychOdpovedi + ' ze ' + otazky.length + ' otázek. Úspěšnost ' + Math.round(pocetSpravnychOdpovedi / otazky.length * 100) + ' %.';
+	hodnoceni.appendChild(procenta);
 }
 
 
